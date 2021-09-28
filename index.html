@@ -1,0 +1,158 @@
+<!doctype html>
+
+<html>
+
+
+<head>
+
+
+<title>Calculator</title>
+ <meta charset="utf-8" />
+ <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style type="text/css">
+    .header{
+             height :100px;
+             width: 70%;
+             margin: auto;
+             border: 5px solid green;
+             border-radius: 20px;
+             text-align: center;
+             font-size: 500%;
+             font-family: cursive;
+             color: rgb(24, 27, 209);
+             background-color: white;
+             margin-bottom: 100px;
+           }
+    .screen{
+             width:70%;
+             margin:auto;
+             height:100px ;
+             background-color:black;
+             color:white;
+             text-align: center;
+             font-size: 250%;
+             margin-bottom: 50px;
+           }
+    .body{
+             display:grid;
+             grid-template-columns:80px 80px 80px 80px;
+             grid-template-rows:80px 80px 80px 80px 80px;
+             grid-gap: 2%;
+             margin-left :35%;
+             margin-bottom: 100px;
+         }
+    .butt{
+             font-size: 200%;
+         }
+    .bg{  
+          height: 950px;
+          background: linear-gradient(to right, red, blue);
+       }
+    .footer{
+            background: wheat;
+           }
+    #dev{
+         font-size:200% ;
+         text-align: center;
+         margin: auto;
+        }
+
+    #name{
+            font-size: 300%;
+           text-align: center;
+           margin: auto;
+           font-family:cursive ;
+         }
+
+</style>
+</head>
+
+
+<body>
+    
+    <div class="bg"> 
+     <div class="header"> Calculator </div>
+     <div class="screen"><p id="sc"></p></div>
+
+        <div class="body">
+
+         <button class="butt" id="b1" onclick="scr_fun('7')">7</button>
+         <button class="butt" id="b2" onclick="scr_fun('8')">8</button>
+         <button class="butt" id="b3" onclick="scr_fun('9')">9</button>
+         <button class="butt" id="b4" onclick="scr_fun('+')">+</button>
+         <button class="butt" id="b5" onclick="scr_fun('4')">4</button>
+         <button class="butt" id="b6" onclick="scr_fun('5')">5</button>
+         <button class="butt" id="b7" onclick="scr_fun('6')">6</button>
+         <button class="butt" id="b8" onclick="scr_fun('-')">-</button>
+         <button class="butt" id="b9" onclick="scr_fun('1')">1</button>
+         <button class="butt" id="b10" onclick="scr_fun('2')">2</button>
+         <button class="butt" id="b11" onclick="scr_fun('3')">3</button>
+         <button class="butt" id="b12" onclick="scr_fun('*')">×</button>
+         <button class="butt" id="b13" onclick="scr_fun('0')">0</button>
+         <button class="butt" id="b14" onclick="scr_fun('.')">.</button>
+         <button class="butt" id="b15" onclick="solve()">=</button>
+         <button class="butt" id="b16" onclick="scr_fun('/')">/</button>
+         <button class="butt" id="b17" onclick="scr_fun('(')">(</button>
+         <button class="butt" id="b18" onclick="scr_fun(')')">)</button>
+         <button class="butt" id="b19" onclick="del()">DEL</button>
+         <button class="butt" id="b20" onclick="ac()">AC</button>
+
+        </div>
+    </div>
+
+       <div class="footer">
+           <p id="dev">-:Developed by :-</p>
+           <br />
+           <p id="name">~ISHWAR KASHYAP~</p>
+           <br />
+           <br />
+           <a href="http://www.facebook.com/ishwar.kashyap.1253236" target="_blank"><img src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png" height=200px width=300px></a>
+           <a href="https://www.instagram.com/__ishwar__4230/?hl=en" target="_blank"><img src="https://i.pinimg.com/originals/4b/4e/13/4b4e1359b5132766e458611a8ee4cda3.jpg" height=200px width=200px></a>
+           <br /><br />
+        </div>
+
+    <script>
+        var i=0;
+         function scr_fun(m){
+            if(i==1) ac();
+             document.getElementById("sc").innerHTML = document.getElementById("sc").innerHTML + m;
+             
+                            }
+            
+         function del(){
+             if(i==1) ac();
+
+             else
+           { document.getElementById("sc").innerHTML = document.getElementById("sc").innerHTML.substring(0,document.getElementById("sc").innerHTML.length-1);}
+            
+                       }
+         function ac(){
+            i=0;
+            document.getElementById("sc").innerHTML="";
+                      }
+
+          function solve(){
+            var exp = document.getElementById("sc").innerHTML;
+            try {
+                eval(exp);
+            }catch(e) {
+                if(e instanceof SyntaxError)
+               { document.getElementById("sc").innerHTML = "Invalid Expression";
+                 i=1;
+            }}
+            if(exp){
+               
+            document.getElementById("sc").innerHTML = eval(exp);
+          }
+            else {
+                i=1;
+                document.getElementById("sc").innerHTML = "Box is Empty"
+                 }
+        }
+
+    </script>
+</body>
+
+
+</html>
